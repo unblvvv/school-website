@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
-const POST_API = 'http://localhost:8080/api/post/';
+const POST_API = 'https://school-website-back.onrender.com/api/post/';
 
 @Injectable({
   providedIn: 'root'
