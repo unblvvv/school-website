@@ -7,6 +7,12 @@
   margin: 0 auto;
 }
 
+.avatar-header {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
 .header-box {
   max-width: 937px;
   margin: 0 auto;
@@ -17,6 +23,7 @@
 
 .profile-menu {
   display: flex;
+  align-items: center;
 }
 
 .profile-image {
@@ -31,6 +38,7 @@
 
 .ng-star-inserted {
   margin-right: 15px;
+  margin-bottom: 0;
 }
 
 .header-box {

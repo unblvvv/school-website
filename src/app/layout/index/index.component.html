@@ -4,18 +4,17 @@
       <div mat-card-avatar class="example-header-image">
         <img class="post-header-img" src="https://cdn.discordapp.com/attachments/1086066192248217752/1102193380584341605/avatar.png" alt="">
       </div>
-      <mat-card-title>{{post.title}}</mat-card-title>
-      <mat-card-subtitle>{{post.location}}</mat-card-subtitle>
+      <mat-card-title align="start">{{post.username}}</mat-card-title>
+      <mat-card-subtitle>{{post.title}}</mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image [src]="formatImage(post.image)" alt="post image">
-    <mat-card-subtitle align="start">Posted by {{post.username}}</mat-card-subtitle>
     <mat-card-content>
       <p>{{post.caption}}</p>
     </mat-card-content>
 
     <mat-card-actions align="start">
       <button *ngIf="isUserDataLoaded" mat-button (click)="likePost(post.id, i)" [ngClass]="post.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
-        <mat-icon>favorite</mat-icon> Like</button>
+        <mat-icon>favorite</mat-icon> Вподобайка</button>
     </mat-card-actions>
 
     <div style="text-align: left">
@@ -23,7 +22,7 @@
     </div>
 
     <mat-form-field class="w-100">
-      <mat-label>Leave a comment...</mat-label>
+      <mat-label>Залишити коментар...</mat-label>
       <input  (keyup.enter)="postComment(message.value ,post.id, i)" matInput #message maxlength="128">
     </mat-form-field>
 

@@ -9,8 +9,8 @@
     <h3 *ngIf="isDataLoaded">{{this.user.firstname}} {{this.user.lastname}}</h3>
 
     <span *ngIf="isLoggedIn" [matMenuTriggerFor]="menu" matTooltip="Profile" mat-icon-button>
-<!--      <img class="profile-image" [src]="previewImgURL || formatImg(userProfileImage)" alt="asd">-->
-      <button>asd</button>
+      <img class="avatar-header" src="https://cdn.discordapp.com/attachments/1086066192248217752/1102193380584341605/avatar.png" alt="avatar">
+<!--      <button>asd</button>-->
     </span>
     <mat-menu id="menu-item" #menu="matMenu">
       <button mat-menu-item routerLink="/profile">Профіль</button>
