@@ -100,5 +100,4 @@ export class IndexComponent implements OnInit {
     }
     return 'data:image/jpeg;base64,' + img;
   }
-
 }
