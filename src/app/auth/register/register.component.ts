@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../service/auth.service';
-import {TokenStorageService} from '../../service/token-storage.service';
 import {NotificationService} from '../../service/notification.service';
 
 @Component({
@@ -47,9 +46,9 @@ export class RegisterComponent implements OnInit {
       confirmPassword: this.registerForm.value.confirmPassword,
     }).subscribe(data => {
       console.log(data);
-      this.notificationService.showSnackBar('Successfully Registered!');
+      this.notificationService.showSnackBar('Успішно зареєстровано!');
     }, error => {
-      this.notificationService.showSnackBar('Something went wrong during registration');
+      this.notificationService.showSnackBar('Під час реєстрації щось пішло не так');
     });
   }
 

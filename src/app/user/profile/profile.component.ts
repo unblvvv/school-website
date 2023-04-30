@@ -72,7 +72,7 @@ export class ProfileComponent implements OnInit {
     if (this.selectedFile != null) {
       this.imageService.uploadImageToUser(this.selectedFile)
         .subscribe(() => {
-          this.notificationService.showSnackBar('Profile Image updated successfully');
+          this.notificationService.showSnackBar('Аватар профілю успішно оновлено');
         });
     }
   }

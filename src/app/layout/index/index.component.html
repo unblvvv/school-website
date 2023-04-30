@@ -17,7 +17,7 @@
         <mat-icon>favorite</mat-icon> Вподобайка</button>
     </mat-card-actions>
 
-    <div style="text-align: left">
+    <div style="text-align: left; padding: 0 16px;">
       <p *ngFor="let comment of post.comments"><span style="font-weight: 500">{{comment.username}}</span>: {{comment.message}}</p>
     </div>
 

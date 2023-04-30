@@ -48,7 +48,7 @@ export class EditUserComponent implements OnInit {
   submit(): void {
     this.userService.updateUser(this.updateUser())
       .subscribe(() => {
-        this.notificationService.showSnackBar('User updated successfully');
+        this.notificationService.showSnackBar('Інформація успішно оновлено');
         this.dialogRef.close();
       });
   }

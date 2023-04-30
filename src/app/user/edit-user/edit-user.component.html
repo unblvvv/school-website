@@ -1,18 +1,18 @@
 <div>
-  <h2>Edit User Profile</h2>
-  <form [formGroup]="profileEditForm">
+  <h2>Редагування профілю</h2>
+  <form class="edit-form" [formGroup]="profileEditForm">
     <mat-form-field class="w-100" appearance="outline">
-      <mat-label>First name</mat-label>
+      <mat-label>Ім'я</mat-label>
       <input matInput
              formControlName="firstName">
     </mat-form-field>
     <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Last name</mat-label>
+      <mat-label>Прізвище</mat-label>
       <input matInput
              formControlName="lastName">
     </mat-form-field>
     <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Biography</mat-label>
+      <mat-label>Про себе</mat-label>
       <input matInput
              formControlName="bio">
     </mat-form-field>

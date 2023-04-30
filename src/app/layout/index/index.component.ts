@@ -70,7 +70,7 @@ export class IndexComponent implements OnInit {
       this.postService.likePost(postId, this.user.username)
         .subscribe(() => {
           post.usersLiked.push(this.user.username);
-          this.notificationService.showSnackBar('Liked!');
+          this.notificationService.showSnackBar('Лайкнуто!');
         });
     } else {
       this.postService.likePost(postId, this.user.username)

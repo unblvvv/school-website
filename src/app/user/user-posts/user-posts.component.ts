@@ -53,12 +53,12 @@ export class UserPostsComponent implements OnInit {
 
   removePost(post: Post, index: number): void {
     console.log(post);
-    const result = confirm('Do you really want to delete this post?');
+    const result = confirm('Ви дійсно хочете видалити цей пост?');
     if (result) {
       this.postService.deletePost(post.id)
         .subscribe(() => {
           this.posts.splice(index, 1);
-          this.notificationService.showSnackBar('Post deleted');
+          this.notificationService.showSnackBar('Пост видалено');
         });
     }
   }
@@ -75,7 +75,7 @@ export class UserPostsComponent implements OnInit {
 
     this.commentService.deleteComment(commentId)
       .subscribe(() => {
-        this.notificationService.showSnackBar('Comment removed');
+        this.notificationService.showSnackBar('Коментар видалено');
         post.comments.splice(commentIndex, 1);
       });
   }

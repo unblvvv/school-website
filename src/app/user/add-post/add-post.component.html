@@ -1,9 +1,9 @@
 <div>
   <div style="text-align: right">
-    <button mat-flat-button color="primary" routerLink="/profile">My Posts</button>
+    <button mat-flat-button color="primary" routerLink="/profile">Мої пости</button>
   </div>
 
-  <h2>Create Post</h2>
+  <h2>Створення поста</h2>
   <form [formGroup]="postForm">
 
     <img class="post-image" [src]="previewImgURL || 'https://www.missingdogsuk.co.uk/wp-content/plugins/wp-job-manager-resumes/assets/images/candidate.png'" alt="user image">
@@ -13,27 +13,27 @@
            #fileInput
            (change)="onFileSelected($event)">
 
-    <button mat-button (click)="fileInput.click()">Pick File</button>
+    <button mat-button (click)="fileInput.click()">Вибрати файл</button>
 
     <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Title</mat-label>
+      <mat-label>Назва</mat-label>
       <input matInput
              formControlName="title">
     </mat-form-field>
     <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Caption</mat-label>
+      <mat-label>Опис(текст)</mat-label>
       <input matInput
              formControlName="caption">
     </mat-form-field>
     <mat-form-field class="w-100" appearance="outline">
-      <mat-label>Location</mat-label>
+      <mat-label>Локація</mat-label>
       <input matInput
              formControlName="location">
     </mat-form-field>
 
     <div style="text-align: right">
       <button mat-flat-button color="primary" [disabled]="postForm.invalid" (click)="submit()">
-        Create Post
+        Створити пост
       </button>
     </div>
 
