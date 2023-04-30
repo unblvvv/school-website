@@ -1,0 +1,19 @@
+@media (max-width:460px){
+  .index-page {
+    width: 90%;
+  }
+  .mdc-card__media {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width:390px){
+  .index-page {
+    width: 90%;
+  }
+  .mdc-card__media {
+    width: 300px;
+    height: 300px;
+  }
+}

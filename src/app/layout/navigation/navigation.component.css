@@ -6,3 +6,33 @@
   display: block;
   margin: 0 auto;
 }
+
+.header-box {
+  max-width: 937px;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.profile-menu {
+  display: flex;
+}
+
+.profile-image {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
+
+.ng-star-inserted {
+  margin-right: 15px;
+}
+
+.header-box {
+  margin-top: 16px;
+}
