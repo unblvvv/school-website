@@ -4,6 +4,10 @@ import {PostService} from '../../service/post.service';
 import {ImageUploadService} from '../../service/image-upload.service';
 import {CommentService} from '../../service/comment.service';
 import {NotificationService} from '../../service/notification.service';
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {EditUserComponent} from "../edit-user/edit-user.component";
+import {User} from "../../models/User";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-user-posts',
@@ -12,13 +16,19 @@ import {NotificationService} from '../../service/notification.service';
 })
 export class UserPostsComponent implements OnInit {
 
+  isUserDataLoaded = false;
   isUserPostsLoaded = false;
   posts: Post [];
+  user: User;
+  userProfileImage: File;
+  previewImgURL: any;
 
   constructor(private postService: PostService,
               private imageService: ImageUploadService,
               private commentService: CommentService,
-              private notificationService: NotificationService) {
+              private dialog: MatDialog,
+              private notificationService: NotificationService,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -29,6 +39,16 @@ export class UserPostsComponent implements OnInit {
         this.getImagesToPosts(this.posts);
         this.getCommentsToPosts(this.posts);
         this.isUserPostsLoaded = true;
+      });
+    this.userService.getCurrentUser()
+      .subscribe(data => {
+        this.user = data;
+        this.isUserDataLoaded = true;
+      });
+
+    this.imageService.getProfileImage()
+      .subscribe(data => {
+        this.userProfileImage = data.imageBytes;
       });
   }
 

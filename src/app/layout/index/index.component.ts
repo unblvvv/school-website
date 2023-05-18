@@ -6,6 +6,8 @@ import {UserService} from '../../service/user.service';
 import {CommentService} from '../../service/comment.service';
 import {NotificationService} from '../../service/notification.service';
 import {ImageUploadService} from '../../service/image-upload.service';
+import {TokenStorageService} from "../../service/token-storage.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-index',
@@ -18,12 +20,18 @@ export class IndexComponent implements OnInit {
   posts: Post[];
   isUserDataLoaded = false;
   user: User;
+  userProfileImage: File;
+  previewImgURL: any;
+  isLoggedIn = false;
+  isDataLoaded = false;
 
   constructor(private postService: PostService,
     private userService: UserService,
     private commentService: CommentService,
     private notificationService: NotificationService,
-    private imageService: ImageUploadService
+    private imageService: ImageUploadService,
+    private tokenService: TokenStorageService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +50,27 @@ export class IndexComponent implements OnInit {
         this.user = data;
         this.isUserDataLoaded = true;
       })
+
+    this.isLoggedIn = !!this.tokenService.getToken();
+
+    if(this.isLoggedIn) {
+      this.userService.getCurrentUser()
+        .subscribe(data => {
+          this.user = data;
+          this.isDataLoaded = true;
+        })
+    }
+
+    this.userService.getCurrentUser()
+      .subscribe(data => {
+        this.user = data;
+        this.isUserDataLoaded = true;
+      });
+
+    this.imageService.getProfileImage()
+      .subscribe(data => {
+        this.userProfileImage = data.imageBytes;
+      });
   }
 
   getImagesToPosts(posts: Post[]): void {
@@ -93,11 +122,15 @@ export class IndexComponent implements OnInit {
         post.comments.push(data);
       });
   }
-
   formatImage(img: any): any {
     if (img == null) {
       return null;
     }
     return 'data:image/jpeg;base64,' + img;
   }
+  logout(): void {
+    this.tokenService.logOut();
+    this.router.navigate(['/login']);
+  }
+
 }

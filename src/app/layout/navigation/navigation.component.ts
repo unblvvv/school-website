@@ -3,6 +3,7 @@ import {User} from '../../models/User';
 import {TokenStorageService} from '../../service/token-storage.service';
 import {UserService} from '../../service/user.service';
 import {Router} from '@angular/router';
+import {ImageUploadService} from "../../service/image-upload.service";
 
 @Component({
   selector: 'app-navigation',
@@ -11,12 +12,16 @@ import {Router} from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
 
+  isUserDataLoaded = false;
   isLoggedIn = false;
   isDataLoaded = false;
+  userProfileImage: File;
   user: User;
+  previewImgURL: any;
 
   constructor(private tokenService: TokenStorageService,
               private userService: UserService,
+              private imageService: ImageUploadService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -29,11 +34,23 @@ export class NavigationComponent implements OnInit {
           this.isDataLoaded = true;
         })
     }
+
+    this.userService.getCurrentUser()
+      .subscribe(data => {
+        this.user = data;
+        this.isUserDataLoaded = true;
+      });
+
+    this.imageService.getProfileImage()
+      .subscribe(data => {
+        this.userProfileImage = data.imageBytes;
+      });
   }
 
-  logout(): void {
-    this.tokenService.logOut();
-    this.router.navigate(['/login']);
+  formatImage(img: any): any {
+    if (img == null) {
+      return null;
+    }
+    return 'data:image/jpeg;base64,' + img;
   }
-
 }

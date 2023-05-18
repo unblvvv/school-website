@@ -1,53 +1,30 @@
-<div class="register-page">
-  <h2>Реєстрація</h2>
-  <p>Вже маєте обліковий запис?  <a routerLink="/login">Увійдіть в систему</a></p>
-  <form [formGroup]="registerForm">
-    <div class="justify-content-center">
-      <mat-form-field appearance="outline">
-        <mat-label>Ваш Email</mat-label>
-        <input matInput
-               formControlName="email">
-      </mat-form-field>
+<div id="wrapper">
+  <div class="m-content">
+    <div class="header">
+      <img src="https://i.imgur.com/zqpwkLQ.png" alt="" />
     </div>
-    <div class="justify-content-center">
-      <mat-form-field appearance="outline">
-        <mat-label>Логін</mat-label>
-        <input matInput
-               formControlName="username">
-      </mat-form-field>
+    <form [formGroup]="registerForm">
+      <div class="l-part">
+        <input matInput type="text" formControlName="email" placeholder="Електронна пошта" class="input-1" />
+        <input matInput type="text" formControlName="username" placeholder="Нікнейм" class="input-1" />
+        <input matInput type="text" formControlName="firstname" placeholder="Ім'я" class="input-1" />
+        <input matInput type="text" formControlName="lastname" placeholder="Прізвище" class="input-1" />
+        <div class="overlap-text">
+          <input matInput formControlName="password" type="password" placeholder="Пароль" class="input-2" />
+        </div>
+        <div class="overlap-text">
+          <input matInput formControlName="confirmPassword" type="password" placeholder="Підтвердити пароль" class="input-2" />
+        </div>
+        <button routerLink="/login" class="btn" [disabled]="registerForm.invalid" (click)="submit()">
+          Зареєструватися
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="sub-content">
+    <div class="s-part">
+      У вас є аккаунт? <a href="/login">Вхід</a>
     </div>
-    <div class="justify-content-center">
-      <mat-form-field appearance="outline">
-        <mat-label>Ім'я</mat-label>
-        <input matInput
-               formControlName="firstname">
-      </mat-form-field>
-    </div>
-    <div class="justify-content-center">
-      <mat-form-field appearance="outline">
-        <mat-label>Прізвище</mat-label>
-        <input matInput
-               formControlName="lastname">
-      </mat-form-field>
-    </div>
-    <div class="justify-content-center">
-      <mat-form-field appearance="outline">
-        <mat-label>Пароль</mat-label>
-        <input type="password" matInput
-               formControlName="password">
-      </mat-form-field>
-    </div>
-    <div class="justify-content-center">
-      <mat-form-field appearance="outline">
-        <mat-label>Підтвердити пароль</mat-label>
-        <input type="password" matInput
-               formControlName="confirmPassword">
-      </mat-form-field>
-    </div>
-
-    <button style="width: 20%" [disabled]="registerForm.invalid" (click)="submit()" mat-flat-button color="primary">
-      Зареєструватися
-    </button>
-
-  </form>
+  </div>
 </div>
+

@@ -1,17 +1,17 @@
 <div>
-  <h2>Редагування профілю</h2>
-  <form class="edit-form" [formGroup]="profileEditForm">
-    <mat-form-field class="w-100" appearance="outline">
+  <h2 style="justify-content: center; display: flex; margin-top: 20px;">Редагування профілю</h2>
+  <form class="edit-form" style="width: 435px" [formGroup]="profileEditForm">
+    <mat-form-field style="width: 400px; margin-left: 25px;" appearance="outline">
       <mat-label>Ім'я</mat-label>
       <input matInput
              formControlName="firstName">
     </mat-form-field>
-    <mat-form-field class="w-100" appearance="outline">
+    <mat-form-field style="width: 400px; margin-left: 25px;" appearance="outline">
       <mat-label>Прізвище</mat-label>
       <input matInput
              formControlName="lastName">
     </mat-form-field>
-    <mat-form-field class="w-100" appearance="outline">
+    <mat-form-field style="width: 400px; margin-left: 25px;" appearance="outline">
       <mat-label>Про себе</mat-label>
       <input matInput
              formControlName="bio">
@@ -20,10 +20,10 @@
     <div class="row">
       <button (click)="closeDialog()" class="w-50"
               mat-button mat-dialog-close disableRipple>
-        Cancel
+        Скасувати
       </button>
       <button color="primary" class="w-50" [disabled]="profileEditForm.invalid" (click)="submit()" mat-button disableRipple>
-        Update
+        Оновити
       </button>
     </div>
   </form>

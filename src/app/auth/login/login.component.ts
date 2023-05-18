@@ -11,7 +11,6 @@ import {NotificationService} from '../../service/notification.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   public loginForm: FormGroup;
 
   constructor(

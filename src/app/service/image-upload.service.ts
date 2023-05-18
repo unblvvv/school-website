@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
-const IMAGE_API = 'https://school-website-back.onrender.com/api/image/';
+const IMAGE_API = 'http://localhost:8080/api/image/';
 
 @Injectable({
   providedIn: 'root'

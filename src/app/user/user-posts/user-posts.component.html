@@ -1,40 +1,67 @@
-<div *ngIf="isUserPostsLoaded" xmlns="http://www.w3.org/1999/html">
-  <div style="text-align: right">
-    <button mat-flat-button color="primary" routerLink="/profile/add">Створити пост</button>
-  </div>
+<div class="profile-container">
 
-  <h2>{{posts.length}} Постів</h2>
+  <div class="gallery-box" *ngFor="let post of posts; let i = index">
 
-  <mat-card class="post-card" *ngFor="let post of posts; let i = index">
-    <mat-card-header style="text-align: left">
-      <div mat-card-avatar class="example-header-image">
-        <img class="post-header-img" src="https://cdn.discordapp.com/attachments/1086066192248217752/1102193380584341605/avatar.png" alt="">
+    <dialog class="dialog" #myDialog>
+      <div class="dialog-con">
+        <div style="display: flex">
+
+          <img class="gallery-box-img" [src]="formatImage(post.image)" alt="">
+
+          <div class="">
+            <div class="post-avatar" style="width: 500px;">
+              <div style="align-items: center; justify-content: space-between; width: 470px; display: flex; margin: 0 auto; padding-top: 15px">
+                <div class="" style="align-items: center; display: flex; ">
+                  <img style="height: 32px; width: 32px; border-radius: 50%; margin-right: 10px;" [src]="previewImgURL || formatImage(userProfileImage) || 'https://cdn.discordapp.com/attachments/1086066192248217752/1106900667701919765/default-user.png'" alt="">
+                  <span>{{user.username}}</span>
+                </div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="6.5" cy="11.5" r="1.5" fill="#262626"/>
+                  <circle cx="12" cy="11.5" r="1.5" fill="#262626"/>
+                  <circle cx="17.5" cy="11.5" r="1.5" fill="#262626"/>
+                </svg>
+              </div>
+            </div>
+
+            <div style="padding-left: 15px; margin-top: 15px">
+              <p>{{post.caption}}</p>
+            </div>
+
+            <div style="padding-left: 15px; margin-top: 15px">
+              <p *ngFor="let comment of post.comments"><span>{{comment.username}}</span>: {{comment.message}}</p>
+            </div>
+          </div>
+          <div style="position: absolute;top: 20px;right: 20px;" (click)="myDialog.close()">
+            <svg aria-label="Закрити" class="x1lliihq x1n2onr6" color="rgb(255, 255, 255)" fill="rgb(255, 255, 255)" height="18" role="img" viewBox="0 0 24 24" width="18"><title>Закрити</title><polyline fill="none" points="20.643 3.357 12 12 3.353 20.647" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" x1="20.649" x2="3.354" y1="20.649" y2="3.354"></line></svg>
+          </div>
+        </div>
       </div>
-      <mat-card-title>{{post.title}}</mat-card-title>
-      <mat-card-subtitle>{{post.location}}</mat-card-subtitle>
-    </mat-card-header>
-    <img class="post-profile-img" mat-card-image [src]="formatImage(post.image)" alt="post image">
-    <mat-card-content>
-      <p>
-        {{post.caption}}
-      </p>
-    </mat-card-content>
+    </dialog>
 
-    <div style="text-align: left">
-      <p *ngFor="let comment of post.comments; let c = index"><span style="font-weight: 500">{{comment.username}}</span>: {{comment.message}}
-        <button color="accent" mat-button (click)="deleteComment(comment.id, i, c)">
-          <mat-icon color="accent">clear</mat-icon>
-        </button>
-      </p>
+    <div class="gallery" *ngIf="isUserPostsLoaded">
+
+      <div class="gallery-item" tabindex="0" (click)="myDialog.show()">
+
+        <img [src]="formatImage(post.image)" class="gallery-image" alt="">
+
+        <div class="gallery-item-type">
+
+          <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
+
+        </div>
+
+        <div class="gallery-item-info">
+
+          <ul>
+            <li style="align-items: center; display: flex;" class="gallery-item-likes"><svg style="height: 30px; width: 30px; fill: white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.808 11.079C19.829 16.132 12 20.5 12 20.5s-7.829-4.368-8.808-9.421C2.227 6.1 5.066 3.5 8 3.5a4.444 4.444 0 0 1 4 2 4.444 4.444 0 0 1 4-2c2.934 0 5.773 2.6 4.808 7.579z"/></svg><i class="fas fa-heart" aria-hidden="true"></i>{{post.likes}}</li>
+          </ul>
+
+        </div>
+
+      </div>
+
     </div>
 
-    <mat-card-actions align="end">
-      <button color="warn" mat-button (click)="removePost(post, i)">
-        <mat-icon color="warn">delete</mat-icon>
-        Видалити пост
-      </button>
-    </mat-card-actions>
+  </div>
 
-    <mat-card-subtitle align="start">Вподобайок: {{post.likes}}</mat-card-subtitle>
-  </mat-card>
 </div>
